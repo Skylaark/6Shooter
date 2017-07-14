@@ -13,7 +13,7 @@ function Start () {
 function Update () {
 	if(Input.GetAxis("horizontal")){
 			Instantiate(Laser);
-			Laser.GetComponent
+			//Laser.GetComponent
 
 	}
 }
