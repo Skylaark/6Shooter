@@ -13,8 +13,9 @@ function Update () {
 }
 
 function Shoot(i : int,x,z){
+	var side : int = GameObject.Find("Cube").GetComponent.<Rotation>().currentRotation[i-1];
 	var Laser = new GameObject("Laser",CapsuleCollider,MeshFilter,MeshRenderer,Rigidbody,Light);
-	var colour : Vector4 = colours[i-1];
+	var colour : Vector4 = colours[side-1];
 	Laser.GetComponent.<CapsuleCollider>().height = 1.5;
 	Laser.GetComponent.<CapsuleCollider>().radius = 0.05;
 	Laser.GetComponent.<CapsuleCollider>().direction = 1;
@@ -22,10 +23,11 @@ function Shoot(i : int,x,z){
 	Laser.transform.position = GameObject.Find("Player").transform.position;
 	Laser.GetComponent.<Rigidbody>().useGravity = false;
 	Laser.GetComponent.<Light>().color = colour;
-	Laser.GetComponent.<Light>().intensity = 1;
-	Laser.GetComponent.<Light>().range = 25;
+	Laser.GetComponent.<Light>().type = 1;
+	Laser.GetComponent.<Light>().intensity = 100;
+	Laser.GetComponent.<Light>().range = 5;
 	Laser.GetComponent.<MeshFilter>().mesh = mesh;
-	Laser.GetComponent.<MeshRenderer>().material = Resources.Load("Materials/Laser"+i.ToString());
+	Laser.GetComponent.<MeshRenderer>().material = Resources.Load("Materials/Laser"+side.ToString());
 	Laser.GetComponent.<Rigidbody>().velocity = Vector3(x,0,z);
 	Laser.AddComponent(BulletKill);
 }

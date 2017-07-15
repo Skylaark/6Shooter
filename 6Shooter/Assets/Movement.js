@@ -1,29 +1,25 @@
-#pragma strict
-function Start() {
+#pragma strictvar Ammo : Array = new Array(0,0,0,0,0,0);
+function Start() {	
 }
 
 function Update() {
-	if (Input.GetKeyDown("left") && !Physics.Raycast(transform.position,Vector3.left,1.1)) {
-		transform.position += Vector3(-1,0,0);
-		gameObject.Find("Cube").GetComponent.<Rotation>().Rotate("right");
-		gameObject.GetComponent(Shoot).Shoot(4,50,0);
-		gameObject.Find("Enemy").GetComponent.<EnemyController>().TakeTurn();
+	if (Input.GetKeyDown("left") && !Physics.Raycast(transform.position,Vector3.left,1.0) && Ammo[1] == 0) {
+		transform.position += Vector3(-1,0,0);		gameObject.GetComponent(Shoot).Shoot(2,50,0);		Ammo[1] = 4;
+		gameObject.Find("Cube").GetComponent.<Rotation>().Rotate("right");		if(gameObject.Find("Enemy") != null){
+			gameObject.Find("Enemy").GetComponent.<EnemyController>().TakeTurn();		}		Reload();
 	}
-	if (Input.GetKeyDown("right") && !Physics.Raycast(transform.position,Vector3.right,1.1)) {
-		transform.position += Vector3(1,0,0);
+	if (Input.GetKeyDown("right") && !Physics.Raycast(transform.position,Vector3.right,1.0) && Ammo[3] == 0) {
+		transform.position += Vector3(1,0,0);		gameObject.GetComponent(Shoot).Shoot(4,-50,0);		Ammo[3] = 4;
 		gameObject.Find("Cube").GetComponent.<Rotation>().Rotate("left");
-		gameObject.GetComponent(Shoot).Shoot(2,-50,0);
-		gameObject.Find("Enemy").GetComponent.<EnemyController>().TakeTurn();
+		if(gameObject.Find("Enemy") != null){			gameObject.Find("Enemy").GetComponent.<EnemyController>().TakeTurn();		}		Reload();
 	}
-	if (Input.GetKeyDown("up") && !Physics.Raycast(transform.position,Vector3.forward,1.1)) {
-		transform.position += Vector3(0,0,1);
+	if (Input.GetKeyDown("up") && !Physics.Raycast(transform.position,Vector3.forward,1.0) && Ammo[0] == 0) {
+		transform.position += Vector3(0,0,1);		gameObject.GetComponent(Shoot).Shoot(1,0,-50);		Ammo[0] = 4;
 		gameObject.Find("Cube").GetComponent.<Rotation>().Rotate("down");
-		gameObject.GetComponent(Shoot).Shoot(5,0,-50);
-		gameObject.Find("Enemy").GetComponent.<EnemyController>().TakeTurn();
+		if(gameObject.Find("Enemy") != null){			gameObject.Find("Enemy").GetComponent.<EnemyController>().TakeTurn();		}		Reload();
 	}
-	if (Input.GetKeyDown("down") && !Physics.Raycast(transform.position,Vector3.back,1.1)) {
-		transform.position += Vector3(0,0,-1);
+	if (Input.GetKeyDown("down") && !Physics.Raycast(transform.position,Vector3.back,1.0) && Ammo[4] == 0) {
+		transform.position += Vector3(0,0,-1);		gameObject.GetComponent(Shoot).Shoot(5,0,50);		Ammo[4] = 4;
 		gameObject.Find("Cube").GetComponent.<Rotation>().Rotate("up");
-		gameObject.GetComponent(Shoot).Shoot(1,0,50);
-		gameObject.Find("Enemy").GetComponent.<EnemyController>().TakeTurn();
-	}}
+		if(gameObject.Find("Enemy") != null){			gameObject.Find("Enemy").GetComponent.<EnemyController>().TakeTurn();		}		Reload();
+	}}function Reload(){	for(var i : int in range(0,6)){		var a : int = Ammo[i];		if(a > 0){			a -= 1;		}		Ammo[i] = a;	}}
