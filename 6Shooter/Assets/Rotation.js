@@ -4,9 +4,12 @@ var rotateDown : Array = new Array([0,0,1,0,0,0],[0,1,0,0,0,0],[0,0,0,0,1,0],[0,
 var rotateRight : Array = new Array([1,0,0,0,0,0],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,0,1],[0,0,0,0,1,0],[0,1,0,0,0,0]);
 var rotateLeft : Array = new Array([1,0,0,0,0,0],[0,0,0,0,0,1],[0,1,0,0,0,0],[0,0,1,0,0,0],[0,0,0,0,1,0],[0,0,0,1,0,0]);
 var currentRotation : Array;
-var rotToPerform : Array;
+var rotToPerform : Array;
+
+var anim : Animator;
 function Start() {
-	 currentRotation = Array(1,2,3,4,5,6);
+	currentRotation = Array(1,2,3,4,5,6);
+	anim = GetComponent("Animator");
 }
 function Update() {
 	
@@ -16,22 +19,54 @@ function Rotate(direction) {
 		case "right":
 			rotToPerform = rotateRight;
 			currentRotation = VectorMultiplication(currentRotation, rotToPerform);
+<<<<<<< Updated upstream
 			transform.Rotate(0,0,90, Space.World);			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
+=======
+			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
+			anim.Play("cube_rotate_right");
+			yield WaitForSeconds(0.6);
+			anim.Play("cube_idle");
+			transform.Rotate(0,0,90);
+>>>>>>> Stashed changes
 			break;
 		case "left":
 			rotToPerform = rotateLeft;
 			currentRotation = VectorMultiplication(currentRotation, rotToPerform);
+<<<<<<< Updated upstream
 			transform.Rotate(0,0,-90, Space.World);			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
+=======
+			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
+			anim.Play("cube_rotate_left");
+			yield WaitForSeconds(0.6);
+			anim.Play("cube_idle");
+			transform.Rotate(0,0,-90);
+>>>>>>> Stashed changes
 			break;
 		case "up":
 			rotToPerform = rotateUp;
 			currentRotation = VectorMultiplication(currentRotation, rotToPerform);
+<<<<<<< Updated upstream
 			transform.Rotate(-90,0,0, Space.World);			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
+=======
+			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
+			anim.Play("cube_rotate_up");
+			yield WaitForSeconds(0.6);
+			anim.Play("cube_idle");
+			transform.Rotate(-90,0,0);
+>>>>>>> Stashed changes
 			break;
 		case "down":
 			rotToPerform = rotateDown;
 			currentRotation = VectorMultiplication(currentRotation, rotToPerform);
+<<<<<<< Updated upstream
 			transform.Rotate(90,0,0, Space.World);			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
+=======
+			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
+			anim.Play("cube_rotate_down");
+			yield WaitForSeconds(0.6);
+			anim.Play("cube_idle");
+			transform.Rotate(90,0,0);
+>>>>>>> Stashed changes
 			break;
 		default:
 			break;
