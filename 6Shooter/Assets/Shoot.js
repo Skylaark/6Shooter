@@ -3,7 +3,7 @@
 var mesh : Mesh;
 
 function Start () {
-	mesh = Resources.Load("Assets/Bullet") as Mesh;
+	mesh = Resources.Load("Models/bullet",typeof(Mesh));
 }
 
 function Update () {
@@ -19,9 +19,10 @@ function Shoot(i,x,z){
 	Laser.transform.position = GameObject.Find("Player").transform.position;
 	Laser.GetComponent.<Rigidbody>().useGravity = false;
 	Laser.GetComponent.<Light>().color = Vector4(1,0,0,1);
-	Laser.GetComponent.<Light>().intensity = 50;
-	Laser.GetComponent.<Light>().range = 50;
+	Laser.GetComponent.<Light>().intensity = 1;
+	Laser.GetComponent.<Light>().range = 25;
 	Laser.GetComponent.<MeshFilter>().mesh = mesh;
-	Laser.GetComponent.<MeshRenderer>().material = Resources.Load("Assets/Materials/Laser"+fileEnd) as Material;
+	Laser.GetComponent.<MeshRenderer>().material = Resources.Load("Materials/Laser"+fileEnd);
+	Debug.Log("Mat");
 	Laser.GetComponent.<Rigidbody>().velocity = Vector3(x,0,z);
 }
