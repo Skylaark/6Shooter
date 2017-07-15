@@ -1,15 +1,15 @@
 #pragma strict
 
-var rotateUp = new Array [Array[0,0,0,0,0,1],Array[0,1,0,0,0,0],Array[1,0,0,0,0,0],Array[0,0,0,1,0,0],Array[0,0,1,0,0,0],Array[0,0,0,0,1,0]];
-var rotateDown = new Array [Array[0,0,1,0,0,0],Array[0,1,0,0,0,0],Array[0,0,0,0,1,0],Array[0,0,0,1,0,0],Array[0,0,1,0,0,0],Array[1,0,0,0,0,0]];
-var rotateRight = new Array [Array[1,0,0,0,0,0],Array[0,0,1,0,0,0],Array[0,0,0,1,0,0],Array[0,0,0,0,0,1],Array[0,0,0,0,1,0],Array[0,1,0,0,0,0]];
-var rotateLeft = new Array [Array[1,0,0,0,0,0],Array[0,0,0,0,0,1],Array[0,1,0,0,0,0],Array[0,0,1,0,0,0],Array[0,0,0,0,1,0],Array[0,0,0,1,0,0]];
+var rotateUp : Array = new Array([0,0,0,0,0,1],[0,1,0,0,0,0],[1,0,0,0,0,0],[0,0,0,1,0,0],[0,0,1,0,0,0],[0,0,0,0,1,0]);
+var rotateDown : Array = new Array([0,0,1,0,0,0],[0,1,0,0,0,0],[0,0,0,0,1,0],[0,0,0,1,0,0],[0,0,1,0,0,0],[1,0,0,0,0,0]);
+var rotateRight : Array = new Array([1,0,0,0,0,0],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,0,1],[0,0,0,0,1,0],[0,1,0,0,0,0]);
+var rotateLeft : Array = new Array([1,0,0,0,0,0],[0,0,0,0,0,1],[0,1,0,0,0,0],[0,0,1,0,0,0],[0,0,0,0,1,0],[0,0,0,1,0,0]);
 
-var currentRotation;
-var rotToPerform;
+var currentRotation : Array;
+var rotToPerform : Array;
 
 function Start() {
-	currentRotation = new Array [1,2,3,4,5,6];
+	currentRotation = new Array(1,2,3,4,5,6);
 }
 
 function Update() {
@@ -21,28 +21,33 @@ function Rotate(direction) {
 		case "right":
 			rotToPerform = rotateRight;
 			VectorMultiplaction();
-			transform.rotation += Quaternion.Euler(90,0,0)
+			transform.Rotate(90,0,0);
 		case "left":
 			rotToPerform = rotateLeft;
 			VectorMultiplaction();
-			transform.rotation += Quaternion.Euler(-90,0,0)
+			transform.Rotate(-90,0,0);
 		case "up":
 			rotToPerform = rotateUp;
 			VectorMultiplaction();
-			transform.rotation += Quaternion.Euler(0,0,90)
+			transform.Rotate(0,0,90);
 		case "down":
 			rotToPerform = rotateDown;
 			VectorMultiplaction();
-			transform.rotation += Quaternion.Euler(0,0,-90)
+			transform.Rotate(0,0,-90);
 	}
 }
 
 function VectorMultiplaction() {
-	var newRotation
-	for (i : int in range(0,5)) {
-		for (j : int in range(0,5)) {
-			newRotation[i] += new Array[currentRotation[j]*rotToPerform[i][j]]
+	var newRotation : Array = [0,0,0,0,0,0];
+	var c : int; 
+	for (var i : int in range(0,5)) {
+		for (var j : int in range(0,5)) {
+			var row : Array = rotToPerform[i];
+			var a : int = currentRotation[j];
+			var b : int = row[j];
+			c += a*b;
+			newRotation[i] = c;
 		}
 	}
-	currentRotation = newRotation
+	currentRotation = newRotation;
 }
