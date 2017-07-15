@@ -1,6 +1,6 @@
 #pragma strict
-
-var currentPosition : System.Vector3;
+/*
+var currentPosition : Vector3;
 var health : int;
 var mesh : Mesh;
 
@@ -45,3 +45,4 @@ function DirectionVector(vector1,vector2) {
 	var directionVector : Vector3 = vector2 - vector1;
 	return(directionVector);
 }
+*/
