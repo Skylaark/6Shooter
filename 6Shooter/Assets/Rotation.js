@@ -16,22 +16,22 @@ function Rotate(direction) {
 		case "right":
 			rotToPerform = rotateRight;
 			currentRotation = VectorMultiplication(currentRotation, rotToPerform);
-			transform.Rotate(0,0,90);			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
+			transform.Rotate(0,0,90, Space.World);			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
 			break;
 		case "left":
 			rotToPerform = rotateLeft;
 			currentRotation = VectorMultiplication(currentRotation, rotToPerform);
-			transform.Rotate(0,0,-90);			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
+			transform.Rotate(0,0,-90, Space.World);			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
 			break;
 		case "up":
 			rotToPerform = rotateUp;
 			currentRotation = VectorMultiplication(currentRotation, rotToPerform);
-			transform.Rotate(-90,0,0);			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
+			transform.Rotate(-90,0,0, Space.World);			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
 			break;
 		case "down":
 			rotToPerform = rotateDown;
 			currentRotation = VectorMultiplication(currentRotation, rotToPerform);
-			transform.Rotate(90,0,0);			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
+			transform.Rotate(90,0,0, Space.World);			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
 			break;
 		default:
 			break;
