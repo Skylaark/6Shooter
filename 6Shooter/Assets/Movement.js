@@ -13,12 +13,12 @@ function Update() {
 		if (Vector3(Input.GetAxis("Horizontal"),0,0) == Vector3.right) {
 			gameObject.Find("Cube").GetComponent.Rotation.Rotate("right");
 			gameObject.GetComponent(Shoot).Shoot("left");
-			//Force enemies to take turn
+			gameObject.Find("Enemy").GetComponent.EnemyController.TakeTurn();
 		}
 		if (Vector3(Input.GetAxis("Horizontal"),0,0) == Vector3.left) {
 			gameObject.Find("Cube").GetComponent.Rotation.Rotate("left");
 			gameObject.GetComponent(Shoot).Shoot("right");
-			// Force enemies to take turn
+			gameObject.Find("Enemy").GetComponent.EnemyController.TakeTurn();
 		}
 	}
 	if (Vector3(0,0,Input.GetAxis("Vertical")) == Vector3.forward || Vector3.back) {
@@ -26,12 +26,12 @@ function Update() {
 		if (Vector3(0,0,Input.GetAxis("Vertical")) == Vector3.back) {
 			gameObject.Find("Cube").GetComponent.Rotation.Rotate("up");
 			gameObject.GetComponent(Shoot).Shoot("down");
-			//Force enemies to take turn
+			gameObject.Find("Enemy").GetComponent.EnemyController.TakeTurn();
 		}
 		if (Vector3(0,0,Input.GetAxis("Vertical")) == Vector3.forward)	 {
 			gameObject.Find("Cube").GetComponent.Rotation.Rotate("down");
 			gameObject.GetComponent(Shoot).Shoot("up");
-			//Force enemies to take turn
+			gameObject.Find("Enemy").GetComponent.EnemyController.TakeTurn();
 		}
 	}
 }
