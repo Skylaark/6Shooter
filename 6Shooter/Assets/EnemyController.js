@@ -14,18 +14,31 @@ function Update() {
 	
 }
 
-function OnCollisionEnter(col : Collision) {
-	if(col.gameObject.name == "laser")	{
+function OnCollisionEnter(col : Collision) {	if(col.gameObject.name == "laser")	{
 		Destroy(this);
 		Destroy(col.gameObject);
 	}
 }
 
 function TakeTurn() {
-	var playerPosition : Vector3 = gameObject.Find("Player").transform.position
-	var directionVector : Vector3 = DirectionVector(currentPosition,playerPosition)
-	if (Mathf.Abs(directionVector.x) >= Mathf.Abs(directionVector.y)) { //>= forces the enemy to default to moving in the x direction if the components of directionVector are the same sizeeeeeeeee
-		transfrom.position +=
+	var playerPosition : Vector3 = gameObject.Find("Player").transform.position;
+	var directionVector : Vector3 = DirectionVector(currentPosition,playerPosition);
+	if (Mathf.Abs(directionVector.x) >= Mathf.Abs(directionVector.z)) { //>= forces the enemy to default to moving in the x direction if the components of directionVector are the same sizeeeeeeeee
+		if (directionVector.x < 0) {
+			transform.position += Vector3.right;
+		}
+		if (directionVector.x > 0) {
+			transform.position += Vector3.left;
+		}
+	}
+	if (Mathf.Abs(directionVector.z) >= Mathf.Abs(directionVector.z)) { //>= forces the enemy to default to moving in the x direction if the components of directionVector are the same sizeeeeeeeee
+		if (directionVector.z < 0) {
+			transform.position += Vector3.forward;
+		}
+		if (directionVector.z > 0) {
+			transform.position += Vector3.back;
+		}
+	}
 }
 
 function DirectionVector(vector1,vector2) {
