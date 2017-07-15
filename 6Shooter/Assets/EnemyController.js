@@ -6,7 +6,7 @@ var mesh : Mesh;
 
 function Start() {
 	health = 1;
-	currentPosition = Vector3(10,0,10);
+	currentPosition = transform.position;
 	mesh = Resources.Load("Assets/Enemy") as Mesh;
 }
 
@@ -15,11 +15,11 @@ function Update() {
 }
 
 function OnTriggerEnter(other : Collider) {
-	if(other.gameObject.name == "laser")	{
+	if(other.gameObject.name == "Laser")	{
 		health = health - 1;
 		Destroy(other.gameObject);
 		if (health == 0) {
-			Destroy(this);
+			Destroy(this.gameObject);
 		}
 	}
 	if(other.gameObject.name == "Player") {
