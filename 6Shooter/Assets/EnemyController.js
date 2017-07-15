@@ -1,5 +1,5 @@
 #pragma strict
-/*
+
 var currentPosition : Vector3;
 var health : int;
 var mesh : Mesh;
@@ -14,12 +14,19 @@ function Update() {
 	
 }
 
-function OnCollisionEnter(col : Collision) {	if(col.gameObject.name == "laser")	{
-		Destroy(this);
-		Destroy(col.gameObject);
+function OnTriggerEnter(other : Collider) {
+	if(other.gameObject.name == "laser")	{
+		health = health - 1;
+		Destroy(other.gameObject);
+		if (health == 0) {
+			Destroy(this);
+		}
+	}
+	if(other.gameObject.name == "Player") {
+		Destroy(other.gameObject);
 	}
 }
-
+	
 function TakeTurn() {
 	var playerPosition : Vector3 = gameObject.Find("Player").transform.position;
 	var directionVector : Vector3 = DirectionVector(currentPosition,playerPosition);
@@ -41,8 +48,7 @@ function TakeTurn() {
 	}
 }
 
-function DirectionVector(vector1,vector2) {
+function DirectionVector(vector1 : Vector3,vector2 : Vector3) {
 	var directionVector : Vector3 = vector2 - vector1;
 	return(directionVector);
 }
-*/

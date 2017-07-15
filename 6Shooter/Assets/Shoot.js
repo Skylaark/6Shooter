@@ -16,6 +16,7 @@ function Shoot(i,x,z){
 	Laser.GetComponent.<CapsuleCollider>().height = 1.5;
 	Laser.GetComponent.<CapsuleCollider>().radius = 0.05;
 	Laser.GetComponent.<CapsuleCollider>().direction = 1;
+	Laser.GetComponent.<CapsuleCollider>().isTrigger = true;
 	Laser.transform.position = GameObject.Find("Player").transform.position;
 	Laser.GetComponent.<Rigidbody>().useGravity = false;
 	Laser.GetComponent.<Light>().color = Vector4(1,0,0,1);

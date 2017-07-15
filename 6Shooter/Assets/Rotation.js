@@ -17,18 +17,24 @@ function Rotate(direction) {
 			rotToPerform = rotateRight;
 			VectorMultiplaction();
 			transform.Rotate(90,0,0);
+			break;
 		case "left":
 			rotToPerform = rotateLeft;
 			VectorMultiplaction();
 			transform.Rotate(-90,0,0);
+			break;
 		case "up":
 			rotToPerform = rotateUp;
 			VectorMultiplaction();
 			transform.Rotate(0,0,90);
+			break;
 		case "down":
 			rotToPerform = rotateDown;
 			VectorMultiplaction();
 			transform.Rotate(0,0,-90);
+			break;
+		default:
+			break;
 	}
 }
 function VectorMultiplaction() {
