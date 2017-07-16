@@ -9,7 +9,7 @@ var rotToPerform : Array;
 var anim : Animator;
 function Start() {
 	currentRotation = Array(1,2,3,4,5,6);
-	anim = GetComponent("Animator");
+	anim = GetComponent.<Animator>();
 }
 function Update() {
 	
@@ -17,31 +17,31 @@ function Update() {
 function Rotate(direction) {	var waitTime : float = 35/60;
 	switch(direction) {
 		case "right":
-			rotToPerform = rotateRight;			anim.Play("Cube_rotate_"+currentRotation[2]+"_"+currentRotation[3]);			Debug.Log("Cube_rotate_"+currentRotation[2]+"_"+currentRotation[3]);
+			rotToPerform = rotateLeft;//			anim.animToPlay = 10*currentRotation[2] + currentRotation[3];			Debug.Log("cube_rotate_"+currentRotation[2]+"_"+currentRotation[3]);
 			currentRotation = VectorMultiplication(currentRotation, rotToPerform);
-			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);			yield WaitForSeconds(waitTime);			anim.Play("Cube_idle");
-			GameObject.Find("GameObject").transform.Rotate(0,0,90,Space.World);
+			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);			yield WaitForSeconds(waitTime);
+			GameObject.Find("GameObject").transform.Rotate(0,0,90,Space.World);//			anim.animToPlay = 0;
 			break;
 		case "left":
-			rotToPerform = rotateLeft;			anim.Play("Cube_rotate_"+currentRotation[2]+"_"+currentRotation[1]);			Debug.Log("Cube_rotate_"+currentRotation[2]+"_"+currentRotation[1]);
+			rotToPerform = rotateRight;//			anim.animToPlay = 10*currentRotation[2] + currentRotation[1];			Debug.Log("cube_rotate_"+currentRotation[2]+"_"+currentRotation[1]);
 			currentRotation = VectorMultiplication(currentRotation, rotToPerform);
 			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
-			yield WaitForSeconds(waitTime);			anim.Play("Cube_idle");
-			GameObject.Find("GameObject").transform.Rotate(0,0,-90,Space.World);
+			yield WaitForSeconds(waitTime);
+			GameObject.Find("GameObject").transform.Rotate(0,0,-90,Space.World);//			anim.animToPlay = 0;
 			break;
 		case "up":
-			rotToPerform = rotateUp;			anim.Play("Cube_rotate_"+currentRotation[2]+"_"+currentRotation[0]);			Debug.Log("Cube_rotate_"+currentRotation[2]+"_"+currentRotation[0]);
+			rotToPerform = rotateDown;//			anim.animToPlay = 10*currentRotation[2] + currentRotation[0];			Debug.Log("cube_rotate_"+currentRotation[2]+"_"+currentRotation[0]);
 			currentRotation = VectorMultiplication(currentRotation, rotToPerform);
 			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
-			yield WaitForSeconds(waitTime);			anim.Play("Cube_idle");
-			GameObject.Find("GameObject").transform.Rotate(-90,0,0,Space.World);
+			yield WaitForSeconds(waitTime);
+			GameObject.Find("GameObject").transform.Rotate(-90,0,0,Space.World);//			anim.animToPlay = 0;
 			break;
 		case "down":
-			rotToPerform = rotateDown;			anim.Play("Cube_rotate_"+currentRotation[2]+"_"+currentRotation[4]);			Debug.Log("Cube_rotate_"+currentRotation[2]+"_"+currentRotation[4]);
+			rotToPerform = rotateUp;//			anim.animToPlay = 10*currentRotation[2] + currentRotation[4];			Debug.Log("cube_rotate_"+currentRotation[2]+"_"+currentRotation[4]);
 			currentRotation = VectorMultiplication(currentRotation, rotToPerform);
 			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
-			yield WaitForSeconds(waitTime);			anim.Play("Cube_idle");
-			GameObject.Find("GameObject").transform.Rotate(90,0,0,Space.World);
+			yield WaitForSeconds(waitTime);
+			GameObject.Find("GameObject").transform.Rotate(90,0,0,Space.World);//			anim.animToPlay = 0;
 			break;
 		default:
 			break;
