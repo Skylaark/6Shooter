@@ -43,7 +43,7 @@ function Shoot(i : int,x : float,z : float, direction : int){
 	Laser.GetComponent.<Light>().intensity = 1;
 	Laser.GetComponent.<Light>().range = 20;
 	Laser.GetComponent.<MeshFilter>().mesh = mesh;
-	Laser.GetComponent.<MeshRenderer>().material = Resources.Load("Materials/Laser"+side.ToString());
+	Laser.GetComponent.<MeshRenderer>().material = Resources.Load("Materials/Ammo"+side.ToString());
 	Laser.GetComponent.<Rigidbody>().velocity = Vector3(x,0,z);
 	Laser.AddComponent(BulletKill);
 	Laser.transform.Rotate(0,90*Mathf.Abs(direction),0);
