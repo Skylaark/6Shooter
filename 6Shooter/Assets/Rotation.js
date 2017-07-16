@@ -22,8 +22,8 @@ function Rotate(direction) {
 			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
 			anim.Play("cube_rotate_right");
 			yield WaitForSeconds(0.6);
-			anim.Play("cube_idle");
-//			transform.Rotate(0,0,90,Space.World);
+//			anim.Play("cube_idle");
+			transform.Rotate(0,0,90,Space.World);
 			break;
 		case "left":
 			rotToPerform = rotateLeft;
@@ -31,8 +31,8 @@ function Rotate(direction) {
 			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
 			anim.Play("cube_rotate_left");
 			yield WaitForSeconds(0.6);
-			anim.Play("cube_idle");
-//			transform.Rotate(0,0,-90,Space.World);
+//			anim.Play("cube_idle");
+			transform.Rotate(0,0,-90,Space.World);
 			break;
 		case "up":
 			rotToPerform = rotateUp;
@@ -40,8 +40,8 @@ function Rotate(direction) {
 			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
 			anim.Play("cube_rotate_up");
 			yield WaitForSeconds(0.6);
-			anim.Play("cube_idle");
-//			transform.Rotate(-90,0,0,Space.World);
+//			anim.Play("cube_idle");
+			transform.Rotate(-90,0,0,Space.World);
 			break;
 		case "down":
 			rotToPerform = rotateDown;
@@ -49,8 +49,8 @@ function Rotate(direction) {
 			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
 			anim.Play("cube_rotate_down");
 			yield WaitForSeconds(0.6);
-			anim.Play("cube_idle");
-//			transform.Rotate(90,0,0,Space.World);
+//			anim.Play("cube_idle");
+			transform.Rotate(90,0,0,Space.World);
 			break;
 		default:
 			break;

@@ -1,3 +1,3 @@
-#pragma strictvar insidePlayer : System.Boolean = true;
-function Start() {
-}function OnTriggerEnter(other : Collider){	if(!insidePlayer){		Destroy(this.gameObject);	}}function OnTriggerExit(other : Collider){	insidePlayer = false;}
+#pragma strictvar frames : int = 0;var insidePlayer : System.Boolean = true;
+function Start() {	
+}function Update() {	frames++;	if(frames > 90){		Destroy(this.gameObject);	}}function OnTriggerEnter(other : Collider){	if(!insidePlayer){		var thudSound : AudioClip = Resources.Load("Thud_Sound");		GameObject.Find("Cube").GetComponent.<AudioSource>().PlayOneShot(thudSound);		Destroy(this.gameObject);	}	insidePlayer = false;}

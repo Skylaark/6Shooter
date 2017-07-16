@@ -1,7 +1,7 @@
 ﻿#pragma strict
 
 var mesh : Mesh;
-var colours : Array = new Array(Vector4(1,0,0,1),Vector4(0,1,0,1),Vector4(0,0,1,1),Vector4(1,1,0,1),Vector4(1,0,1,1),Vector4(0,1,1,1));
+var colours : Array = new Array(Vector4(1,0,0,1),Vector4(1,0,1,1),Vector4(0,1,0,1),Vector4(1,1,0,1),Vector4(0,0,1,1),Vector4(0,1,1,1));
 
 
 function Start () {
@@ -12,7 +12,7 @@ function Update () {
 
 }
 
-function Shoot(i : int,x,z, direction : int){
+function Shoot(i : int,x : float,z : float, direction : int){
 	var side : int = GameObject.Find("Cube").GetComponent.<Rotation>().currentRotation[i-1];
 	var Laser = new GameObject("Laser",CapsuleCollider,MeshFilter,MeshRenderer,Rigidbody,Light);
 	var colour : Vector4 = colours[side-1];
@@ -20,7 +20,11 @@ function Shoot(i : int,x,z, direction : int){
 	Laser.GetComponent.<CapsuleCollider>().radius = 0.05;
 	Laser.GetComponent.<CapsuleCollider>().direction = 1;
 	Laser.GetComponent.<CapsuleCollider>().isTrigger = true;
-	Laser.transform.position = GameObject.Find("Player").transform.position;
+	if(z != 0){
+		Laser.transform.position = GameObject.Find("Player").transform.position + Vector3(0, 0, z/Mathf.Abs(z));
+	}else if(x != 0){
+		Laser.transform.position = GameObject.Find("Player").transform.position + Vector3(x/Mathf.Abs(x), 0, 0);
+	}
 	Laser.GetComponent.<Rigidbody>().useGravity = false;
 	Laser.GetComponent.<Light>().color = colour;
 	Laser.GetComponent.<Light>().type = 2;
@@ -30,6 +34,10 @@ function Shoot(i : int,x,z, direction : int){
 	Laser.GetComponent.<MeshRenderer>().material = Resources.Load("Materials/Laser"+side.ToString());
 	Laser.GetComponent.<Rigidbody>().velocity = Vector3(x,0,z);
 	Laser.AddComponent(BulletKill);
-	Laser.transform.Rotate(0,90*direction,0);
+	Laser.transform.Rotate(0,90*Mathf.Abs(direction),0);
+
+	var shootSound : AudioClip = Resources.Load("Laser_Shoot_Sound");
+	GameObject.Find("Player").GetComponent.<AudioSource>().volume = 0.2;
+	GameObject.Find("Player").GetComponent.<AudioSource>().PlayOneShot(shootSound);
 }
 
