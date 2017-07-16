@@ -4,7 +4,7 @@ var navInputAvailable : System.Boolean;
 var playInputAvailable : System.Boolean;
 var goToNextLevel : System.Boolean;
 
-var cameraPosition;
+var cameraPosition : Vector3;
 var currentLevel;
 
 var nextLevelPos;
@@ -24,43 +24,47 @@ function Start() {
 	navInputAvailable = true;
 	playInputAvailable = false;
 	currentLevel = 0;
-	cameraPosition : Vector3 = transform.position;
-	level0Pos = Vector3(-20,215,24),Space.World;
-	level1Pos =	Vector3(1,23,-10),Space.World;
-	level2Pos = Vector3(100,13,-10),Space.World;
-	level3Pos = Vector3(1,123,-10),Space.World;
-	level4Pos = Vector3(1,13,-100),Space.World;
+	cameraPosition = transform.position;
+	level0Pos = Vector3(-20,215,24);
+	level1Pos =	Vector3(1,23,-10);
+	level2Pos = Vector3(100,13,-10);
+	level3Pos = Vector3(1,123,-10);
+	level4Pos = Vector3(1,13,-100);
 }
 
 function Update() {
-	MoveCamera()
-	ChangeLevel()
+	MoveCamera();
+	ChangeLevel();
 }
 
 function ChangeLevel() {
 	switch (currentLevel) {
-		case: 0
+		case(0):
 			nextLevelPos = level1Pos;
 			currentLevelPos = level0Pos;
 			prevLevelPos = level0Pos;
 			break;
-		case: 1
+		case(1):
 			nextLevelPos = level2Pos;
 			currentLevelPos = level1Pos;
 			prevLevelPos = level0Pos;
-		case: 2
+			break;
+		case(2):
 			nextLevelPos = level3Pos;
 			currentLevelPos = level2Pos;
 			prevLevelPos = level1Pos;
 			break;
-		case: 3
+		case(3):
 			nextLevelPos = level4Pos;
 			currentLevelPos = level3Pos;
 			prevLevelPos = level2Pos;
-		case: 4
-			nextLevelPos = level4Pos
+			break;
+		case(4):
+			nextLevelPos = level4Pos;
 			currentLevelPos = level4Pos;
-			prevLevelPos = level3Pos
+			prevLevelPos = level3Pos;
+			break;
+		default:
 			break;
 	}
 }
@@ -68,7 +72,7 @@ function ChangeLevel() {
 function MoveCamera() {
 	var journeyTimeS = 1;
 	var journeyTime = 1;
-	if (currentLevel === 0 && Input.anyKeyDown === true && navInputAvailable = true) {
+	if (currentLevel === 0 && Input.anyKeyDown === true && navInputAvailable == true) {
 		navInputAvailable = false;
 		playInputAvailable = false;
 		transform.Position = Vector3.Slerp(currentLevelPos,nextLevelPos,journeyTimeS);
@@ -76,7 +80,7 @@ function MoveCamera() {
 		currentLevel = 1;
 		navInputAvailable = true;
 	}
-	if (currentLevel <= 1 && Input.GetKeyDown("left") === true && navInputAvailable = true) {
+	if (currentLevel <= 1 && Input.GetKeyDown("left") === true && navInputAvailable == true) {
 		navInputAvailable = false;
 		playInputAvailable = false;
 		transform.Position = Vector3.Lerp(currentLevelPos,prevLevelPos,journeyTime);
@@ -84,7 +88,7 @@ function MoveCamera() {
 		currentLevel -= 1;
 		navInputAvailable = true;
 	}
-	if (currentLevel <= 1 && Input.GetKeyDown("right") === true && navInputAvailable = true) {
+	if (currentLevel <= 1 && Input.GetKeyDown("right") === true && navInputAvailable == true) {
 		navInputAvailable = false;
 		playInputAvailable = false;
 		transform.Position = Vector3.Lerp(currentLevelPos,nextLevelPos,journeyTime);
@@ -92,20 +96,20 @@ function MoveCamera() {
 		currentLevel += 1;
 		navInputAvailable = true;
 	}
-	if (currentLevel <= 1 && Input.GetKeyDown("return") === true && navInputAvailable = true) {
+	if (currentLevel <= 1 && Input.GetKeyDown("return") === true && navInputAvailable == true) {
 		navInputAvailable = false;
 		transform.Position = Vector3.Lerp(currentLevelPos,currentLevelPos - Vector3(0,-10,0),journeyTime);
 		yield WaitForSeconds(journeyTime);
 		playInputAvailable = true;
 	}
-	if (currentLevel <= 1 && Input.GetKeyDown("escape") === true && playInputAvailable = true) {
-		cameraPosition = transform.position
+	if (currentLevel <= 1 && Input.GetKeyDown("escape") === true && playInputAvailable == true) {
+		cameraPosition = transform.position;
 		playInputAvailable = false;
 		transform.Position = Vector3.Lerp(cameraPosition,currentLevelPos - Vector3(0,10,0),journeyTime);
 		yield WaitForSeconds(journeyTime);
 		navInputAvailable = true;
 	}
-	if (LevelComplete() = true) {
+	if (LevelComplete() == true) {
 		playInputAvailable = false;
 		transform.Position = Vector3.Lerp(cameraPosition,currentLevelPos - Vector3(0,10,0),journeyTime);
 		yield WaitForSeconds(journeyTime);

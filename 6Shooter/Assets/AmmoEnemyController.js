@@ -18,7 +18,7 @@ function OnTriggerEnter(other : Collider) {
 		health = health - 1;
 		Destroy(other.gameObject);
 		if (health == 0) {
-			var ammoPack : new GameObject("AmmoPack",SphereCollider,MeshFilter,MeshRenderer,Rigidbody,Light,Ammo);
+			var ammoPack = new GameObject("AmmoPack",SphereCollider,MeshFilter,MeshRenderer,Rigidbody,Light,Ammo);
 			AmmoPack.GetComponent.<SphereCollider>().radius = 0.25;
 			AmmoPack.transform.position = GameObject.Find("AmmoEnemy").transform.position;
 			AmmoPack.GetComponent.<SphereCollider>().isTrigger = true;
@@ -27,7 +27,7 @@ function OnTriggerEnter(other : Collider) {
 			AmmoPack.GetComponent.<Light>().type = 1;
 			AmmoPack.GetComponent.<Light>().intensity = 2;
 			AmmoPack.GetComponent.<Light>().range = 1;
-			AmmoPack.GetComponent.<Light>().transform.rotation = Quaternion.Euler(Vector3(90,0,0))
+			AmmoPack.GetComponent.<Light>().transform.rotation = Quaternion.Euler(Vector3(90,0,0));
 			AmmoPack.GetComponent.<MeshFilter>().mesh = mesh;
 			AmmoPack.GetComponent.<MeshRenderer>().material = Resources.Load("Materials/Ammo");
 			Destroy(this.gameObject);
