@@ -19,17 +19,17 @@ function OnTriggerEnter(other : Collider) {
 		Destroy(other.gameObject);
 		if (health == 0) {
 			var ammoPack = new GameObject("AmmoPack",SphereCollider,MeshFilter,MeshRenderer,Rigidbody,Light,Ammo);
-			AmmoPack.GetComponent.<SphereCollider>().radius = 0.25;
-			AmmoPack.transform.position = GameObject.Find("AmmoEnemy").transform.position;
-			AmmoPack.GetComponent.<SphereCollider>().isTrigger = true;
-			AmmoPack.GetComponent.<Rigidbody>().useGravity = false;
-			AmmoPack.GetComponent.<Light>().color = Vector4(1,1,1,0.5);
-			AmmoPack.GetComponent.<Light>().type = 1;
-			AmmoPack.GetComponent.<Light>().intensity = 2;
-			AmmoPack.GetComponent.<Light>().range = 1;
-			AmmoPack.GetComponent.<Light>().transform.rotation = Quaternion.Euler(Vector3(90,0,0));
-			AmmoPack.GetComponent.<MeshFilter>().mesh = mesh;
-			AmmoPack.GetComponent.<MeshRenderer>().material = Resources.Load("Materials/Ammo");
+			ammoPack.GetComponent.<SphereCollider>().radius = 0.25;
+			ammoPack.transform.position = GameObject.Find("AmmoEnemy").transform.position;
+			ammoPack.GetComponent.<SphereCollider>().isTrigger = true;
+			ammoPack.GetComponent.<Rigidbody>().useGravity = false;
+			ammoPack.GetComponent.<Light>().color = Vector4(1,1,1,0.5);
+			ammoPack.GetComponent.<Light>().type = 1;
+			ammoPack.GetComponent.<Light>().intensity = 2;
+			ammoPack.GetComponent.<Light>().range = 1;
+			ammoPack.GetComponent.<Light>().transform.rotation = Quaternion.Euler(Vector3(90,0,0));
+			ammoPack.GetComponent.<MeshFilter>().mesh = mesh;
+			ammoPack.GetComponent.<MeshRenderer>().material = Resources.Load("Materials/Ammo");
 			Destroy(this.gameObject);
 		}
 	}

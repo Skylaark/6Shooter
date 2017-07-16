@@ -5,11 +5,11 @@ var playInputAvailable : System.Boolean;
 var goToNextLevel : System.Boolean;
 
 var cameraPosition : Vector3;
-var currentLevel;
+var currentLevel : int;
 
-var nextLevelPos;
-var prevLevelPos;
-var currentLevelPos;
+var nextLevelPos : Vector3;
+var prevLevelPos : Vector3;
+var currentLevelPos : Vector3;
 
 var slerps : Vector3;
 
@@ -72,56 +72,55 @@ function ChangeLevel() {
 function MoveCamera() {
 	var journeyTimeS = 1;
 	var journeyTime = 1;
-	if (currentLevel === 0 && Input.anyKeyDown === true && navInputAvailable == true) {
+	if (currentLevel == 0 && Input.anyKeyDown == true && navInputAvailable == true) {
 		navInputAvailable = false;
 		playInputAvailable = false;
-		transform.Position = Vector3.Slerp(currentLevelPos,nextLevelPos,journeyTimeS);
+		transform.position = Vector3.Slerp(currentLevelPos,nextLevelPos,journeyTimeS);
 		yield WaitForSeconds(journeyTimeS);
 		currentLevel = 1;
 		navInputAvailable = true;
 	}
-	if (currentLevel <= 1 && Input.GetKeyDown("left") === true && navInputAvailable == true) {
+	if (currentLevel >= 1 && Input.GetKeyDown("left") == true && navInputAvailable == true) {
 		navInputAvailable = false;
 		playInputAvailable = false;
-		transform.Position = Vector3.Lerp(currentLevelPos,prevLevelPos,journeyTime);
+		transform.position = Vector3.Lerp(currentLevelPos,prevLevelPos,journeyTime);
 		yield WaitForSeconds(journeyTime);
 		currentLevel -= 1;
 		navInputAvailable = true;
 	}
-	if (currentLevel <= 1 && Input.GetKeyDown("right") === true && navInputAvailable == true) {
+	if (currentLevel >= 1 && Input.GetKeyDown("right") == true && navInputAvailable == true) {
 		navInputAvailable = false;
 		playInputAvailable = false;
-		transform.Position = Vector3.Lerp(currentLevelPos,nextLevelPos,journeyTime);
+		transform.position = Vector3.Lerp(currentLevelPos,nextLevelPos,journeyTime);
 		yield WaitForSeconds(journeyTime);
 		currentLevel += 1;
 		navInputAvailable = true;
 	}
-	if (currentLevel <= 1 && Input.GetKeyDown("return") === true && navInputAvailable == true) {
+	if (currentLevel >= 1 && Input.GetKeyDown("return") == true && navInputAvailable == true) {
 		navInputAvailable = false;
-		transform.Position = Vector3.Lerp(currentLevelPos,currentLevelPos - Vector3(0,-10,0),journeyTime);
+		transform.position = Vector3.Lerp(currentLevelPos,currentLevelPos - Vector3(0,-10,0),journeyTime);
 		yield WaitForSeconds(journeyTime);
 		playInputAvailable = true;
 	}
-	if (currentLevel <= 1 && Input.GetKeyDown("escape") === true && playInputAvailable == true) {
+	if (currentLevel >= 1 && Input.GetKeyDown("escape") == true && playInputAvailable == true) {
 		cameraPosition = transform.position;
 		playInputAvailable = false;
-		transform.Position = Vector3.Lerp(cameraPosition,currentLevelPos - Vector3(0,10,0),journeyTime);
+		transform.position = Vector3.Lerp(cameraPosition,currentLevelPos + Vector3(0,10,0),journeyTime);
 		yield WaitForSeconds(journeyTime);
 		navInputAvailable = true;
 	}
-	if (LevelComplete() == true) {
+	if (goToNextLevel == true) {
 		playInputAvailable = false;
-		transform.Position = Vector3.Lerp(cameraPosition,currentLevelPos - Vector3(0,10,0),journeyTime);
+		transform.position = Vector3.Lerp(cameraPosition,currentLevelPos - Vector3(0,10,0),journeyTime);
 		yield WaitForSeconds(journeyTime);
-		transform.Position = Vector3.Slerp(currentLevelPos,nextLevelPos,journeyTimeS);
+		transform.position = Vector3.Slerp(currentLevelPos,nextLevelPos,journeyTimeS);
 		yield WaitForSeconds(journeyTimeS);
 		currentLevel += 1;
 		navInputAvailable = true;
+		goToNextLevel = false;
 	}
 }
 
 function LevelComplete() {
-	return(true);
+	goToNextLevel = true;
 }
-	
-	
