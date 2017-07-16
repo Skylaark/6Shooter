@@ -2330,6 +2330,29 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+--- !u!1102 &1102178449906101752
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: cube_rotate_yellow_blue
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: a9daf146c95837e4fbdd19406e011fca, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
 --- !u!1102 &1102197554311417590
 AnimatorState:
   serializedVersion: 5
@@ -2401,13 +2424,13 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
---- !u!1102 &1102216056714604774
+--- !u!1102 &1102206607590968174
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: cube_rotate_left_red 0
+  m_Name: cube_rotate_cyan_blue
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -2419,7 +2442,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f2faf1dcafd49f44eae65802b3736e6f, type: 2}
+  m_Motion: {fileID: 7400000, guid: 0151b28c67d736844a7468e96c39ed3c, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -2496,7 +2519,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 9cccb6cf062aa7046a31b74264fc6486, type: 2}
+  m_Motion: {fileID: 7400000, guid: 6759b7e5c8af4a24bb6f65127f5fab2a, type: 2}
   m_Tag: Red_Up
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -2567,7 +2590,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e7d4345d9cc995b49b4eaea35d88b465, type: 2}
+  m_Motion: {fileID: 7400000, guid: f2faf1dcafd49f44eae65802b3736e6f, type: 2}
   m_Tag: Red_Up
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -2641,6 +2664,52 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 2d1c7ceda63588b4791caa494c3bfb82, type: 2}
   m_Tag: Blue_Up
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+--- !u!1102 &1102351701378533544
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: cube_rotate_magenta_blue
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 1cc3ae3caf8cd4d46b7b2a0d4bd6e3f5, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+--- !u!1102 &1102354267481302020
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: cube_rotate_cyan_magenta
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: dcfe7c6e4425bf745951e35b23fa215e, type: 2}
+  m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -2934,29 +3003,6 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
---- !u!1102 &1102621468972471998
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: cube_rotate_down_red 0
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 31d6c17d7e4075b4bafa1c3a2e4b6939, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
 --- !u!1102 &1102639483402824772
 AnimatorState:
   serializedVersion: 5
@@ -3034,29 +3080,6 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: rotateLeft
   m_CycleOffsetParameter: 
---- !u!1102 &1102785134065111586
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: cube_rotate_right_red 0
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6759b7e5c8af4a24bb6f65127f5fab2a, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
 --- !u!1102 &1102787233237231032
 AnimatorState:
   serializedVersion: 5
@@ -3099,7 +3122,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 60fe0ef43df6ae149b7eee3b366ba103, type: 2}
+  m_Motion: {fileID: 7400000, guid: 31d6c17d7e4075b4bafa1c3a2e4b6939, type: 2}
   m_Tag: Red_Up
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -3206,6 +3229,29 @@ AnimatorState:
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
+--- !u!1102 &1102886159801660680
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: cube_idle_blue 0
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 9db3d6911870eb84f8a69c7f8f00a84c, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
 --- !u!1102 &1102917445092911236
 AnimatorState:
   serializedVersion: 5
@@ -3226,6 +3272,29 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_Motion: {fileID: 7400000, guid: e7d4345d9cc995b49b4eaea35d88b465, type: 2}
   m_Tag: Green_Up
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+--- !u!1102 &1102948346438364266
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: cube_rotate_cyan_yellow
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 8cf859dd1042d2a41949069d44dc8602, type: 2}
+  m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -3425,14 +3494,23 @@ AnimatorStateMachine:
     m_State: {fileID: 1102416893290403134}
     m_Position: {x: -72, y: 108, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102621468972471998}
+    m_State: {fileID: 1102886159801660680}
     m_Position: {x: -37, y: 173, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102216056714604774}
+    m_State: {fileID: 1102354267481302020}
     m_Position: {x: -2, y: 238, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102785134065111586}
+    m_State: {fileID: 1102206607590968174}
     m_Position: {x: 33, y: 303, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102948346438364266}
+    m_Position: {x: 68, y: 368, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102351701378533544}
+    m_Position: {x: 103, y: 433, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102178449906101752}
+    m_Position: {x: 138, y: 498, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
