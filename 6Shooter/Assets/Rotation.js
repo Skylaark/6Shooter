@@ -9,43 +9,40 @@ var rotToPerform : Array;
 var anim : Animator;
 function Start() {
 	currentRotation = Array(1,2,3,4,5,6);
-	anim = GetComponent.<Animator>();
+	anim = GetComponent("Animator");
 }
 function Update() {
 	
 }
-function Rotate(direction) {	var waitTime : float = 35/60;
+function Rotate(direction) {	var waitTime : float = 35/60;	var thudSound : AudioClip = Resources.Load("Thud_Sound");
 	switch(direction) {
 		case "right":
-			rotToPerform = rotateLeft;//			anim.animToPlay = 10*currentRotation[2] + currentRotation[3];			Debug.Log("cube_rotate_"+currentRotation[2]+"_"+currentRotation[3]);
+			rotToPerform = rotateRight;
 			currentRotation = VectorMultiplication(currentRotation, rotToPerform);
-			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);			yield WaitForSeconds(waitTime);
-			GameObject.Find("GameObject").transform.Rotate(0,0,90,Space.World);//			anim.animToPlay = 0;
+			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
+			GameObject.Find("GameObject").transform.Rotate(0,0,45,Space.World);			GameObject.Find("Player").transform.position += Vector3(-0.5,Mathf.Sqrt(2)/2,0);			yield WaitForSeconds(0.3);			GameObject.Find("GameObject").transform.Rotate(0,0,45,Space.World);			GameObject.Find("Player").transform.position += Vector3(-0.5,-Mathf.Sqrt(2)/2,0);
 			break;
 		case "left":
-			rotToPerform = rotateRight;//			anim.animToPlay = 10*currentRotation[2] + currentRotation[1];			Debug.Log("cube_rotate_"+currentRotation[2]+"_"+currentRotation[1]);
+			rotToPerform = rotateLeft;
 			currentRotation = VectorMultiplication(currentRotation, rotToPerform);
 			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
-			yield WaitForSeconds(waitTime);
-			GameObject.Find("GameObject").transform.Rotate(0,0,-90,Space.World);//			anim.animToPlay = 0;
+			GameObject.Find("GameObject").transform.Rotate(0,0,-45,Space.World);			GameObject.Find("Player").transform.position += Vector3(0.5,Mathf.Sqrt(2)/2,0);			yield WaitForSeconds(0.3);			GameObject.Find("GameObject").transform.Rotate(0,0,-45,Space.World);			GameObject.Find("Player").transform.position += Vector3(0.5,-Mathf.Sqrt(2)/2,0);
 			break;
 		case "up":
-			rotToPerform = rotateDown;//			anim.animToPlay = 10*currentRotation[2] + currentRotation[0];			Debug.Log("cube_rotate_"+currentRotation[2]+"_"+currentRotation[0]);
+			rotToPerform = rotateUp;
 			currentRotation = VectorMultiplication(currentRotation, rotToPerform);
 			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
-			yield WaitForSeconds(waitTime);
-			GameObject.Find("GameObject").transform.Rotate(-90,0,0,Space.World);//			anim.animToPlay = 0;
+			GameObject.Find("GameObject").transform.Rotate(-45,0,0,Space.World);			GameObject.Find("Player").transform.position += Vector3(0,Mathf.Sqrt(2)/2,-0.5);			yield WaitForSeconds(0.3);			GameObject.Find("GameObject").transform.Rotate(-45,0,0,Space.World);			GameObject.Find("Player").transform.position += Vector3(0,-Mathf.Sqrt(2)/2,-0.5);
 			break;
 		case "down":
-			rotToPerform = rotateUp;//			anim.animToPlay = 10*currentRotation[2] + currentRotation[4];			Debug.Log("cube_rotate_"+currentRotation[2]+"_"+currentRotation[4]);
+			rotToPerform = rotateDown;
 			currentRotation = VectorMultiplication(currentRotation, rotToPerform);
 			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
-			yield WaitForSeconds(waitTime);
-			GameObject.Find("GameObject").transform.Rotate(90,0,0,Space.World);//			anim.animToPlay = 0;
+			GameObject.Find("GameObject").transform.Rotate(45,0,0,Space.World);			GameObject.Find("Player").transform.position += Vector3(0,Mathf.Sqrt(2)/2,0.5);			yield WaitForSeconds(0.3);			GameObject.Find("GameObject").transform.Rotate(45,0,0,Space.World);			GameObject.Find("Player").transform.position += Vector3(0,-Mathf.Sqrt(2)/2,0.5);
 			break;
 		default:
 			break;
-	}
+	}	GameObject.Find("Cube").GetComponent.<AudioSource>().PlayOneShot(thudSound);
 }
 function VectorMultiplication(vector : Array, RotToPerform : Array) {
 	var newRotation : Array = [0,0,0,0,0,0];	var c : int; 

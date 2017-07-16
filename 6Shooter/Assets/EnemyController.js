@@ -19,6 +19,8 @@ function OnTriggerEnter(other : Collider) {
 		Destroy(other.gameObject);
 		if (health == 0) {
 			Destroy(this.gameObject);
+			var popSound : AudioClip = Resources.Load("Enemy_Pop_Sound");
+			GameObject.Find("Cube").GetComponent.<AudioSource>().PlayOneShot(popSound);
 		}
 	}
 	if(other.gameObject.name == "Player") {

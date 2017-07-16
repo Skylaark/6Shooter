@@ -16,10 +16,26 @@ function Shoot(i : int,x : float,z : float, direction : int){
 	var side : int = GameObject.Find("Cube").GetComponent.<Rotation>().currentRotation[i-1];
 	var Laser = new GameObject("Laser",CapsuleCollider,MeshFilter,MeshRenderer,Rigidbody,Light);
 	var colour : Vector4 = colours[side-1];
+
+	switch(colour){
+		case(Vector4(1,0,0,1)): GameObject.Find("RedSide").GetComponent.<ColourController>().makeDark();
+			break;
+		case(Vector4(1,0,1,1)): GameObject.Find("PinkSide").GetComponent.<ColourController>().makeDark();
+			break;
+		case(Vector4(0,1,0,1)): GameObject.Find("GreenSide").GetComponent.<ColourController>().makeDark();
+			break;
+		case(Vector4(1,1,0,1)): GameObject.Find("YellowSide").GetComponent.<ColourController>().makeDark();
+			break;
+		case(Vector4(0,0,1,1)): GameObject.Find("BlueSide").GetComponent.<ColourController>().makeDark();
+			break;
+		case(Vector4(0,1,1,1)): GameObject.Find("CyanSide").GetComponent.<ColourController>().makeDark();
+			break;
+	}
+
 	Laser.GetComponent.<CapsuleCollider>().height = 1.5;
 	Laser.GetComponent.<CapsuleCollider>().radius = 0.05;
 	Laser.GetComponent.<CapsuleCollider>().direction = 1;
-	Laser.GetComponent.<CapsuleCollider>().isTrigger = true;
+	Laser.GetComponent.<CapsuleCollider>().isTrigger = false;
 	if(z != 0){
 		Laser.transform.position = GameObject.Find("Player").transform.position + Vector3(0, 0, z/Mathf.Abs(z));
 	}else if(x != 0){
