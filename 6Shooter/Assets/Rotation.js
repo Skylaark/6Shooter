@@ -20,28 +20,25 @@ function Rotate(direction) {
 			rotToPerform = rotateRight;
 			currentRotation = VectorMultiplication(currentRotation, rotToPerform);
 			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
-			anim.Play("cube_rotate_right");
+			anim.Play("cube_rotate_"+currentRotation[3]+"_"+currentRotation[4]);
 			yield WaitForSeconds(0.6);
-//			anim.Play("cube_idle");
-			transform.Rotate(0,0,90,Space.World);
+			GameObject.Find("GameObject").transform.Rotate(0,0,90,Space.World);
 			break;
 		case "left":
 			rotToPerform = rotateLeft;
 			currentRotation = VectorMultiplication(currentRotation, rotToPerform);
 			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
-			anim.Play("cube_rotate_left");
+			anim.Play("cube_rotate_"+currentRotation[3]+"_"+currentRotation[2]);
 			yield WaitForSeconds(0.6);
-//			anim.Play("cube_idle");
-			transform.Rotate(0,0,-90,Space.World);
+			GameObject.Find("GameObject").transform.Rotate(0,0,-90,Space.World);
 			break;
 		case "up":
 			rotToPerform = rotateUp;
 			currentRotation = VectorMultiplication(currentRotation, rotToPerform);
 			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
-			anim.Play("cube_rotate_up");
+			anim.Play("cube_rotate_"+currentRotation[3]+"_"+currentRotation[4]);
 			yield WaitForSeconds(0.6);
-//			anim.Play("cube_idle");
-			transform.Rotate(-90,0,0,Space.World);
+			GameObject.Find("GameObject").transform.Rotate(-90,0,0,Space.World);
 			break;
 		case "down":
 			rotToPerform = rotateDown;
@@ -49,8 +46,7 @@ function Rotate(direction) {
 			GameObject.Find("Player").GetComponent.<Movement>().Ammo = VectorMultiplication(GameObject.Find("Player").GetComponent.<Movement>().Ammo, rotToPerform);
 			anim.Play("cube_rotate_down");
 			yield WaitForSeconds(0.6);
-//			anim.Play("cube_idle");
-			transform.Rotate(90,0,0,Space.World);
+			GameObject.Find("GameObject").transform.Rotate(90,0,0,Space.World);
 			break;
 		default:
 			break;

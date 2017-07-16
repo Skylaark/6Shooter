@@ -22,4 +22,4 @@ function Update() {
 		transform.position += Vector3(0,0,-1);		gameObject.GetComponent(Shoot).Shoot(5,0,shootSpeed,1);		Ammo[4] = NumberOfReloadMoves;
 		gameObject.Find("Cube").GetComponent.<Rotation>().Rotate("up");
 		if(gameObject.Find("Enemy") != null){			gameObject.Find("Enemy").GetComponent.<EnemyController>().TakeTurn();		}		Reload();
-	}}function Reload(){	for(var i : int in range(0,6)){		var a : int = Ammo[i];		if(a > 0){			a -= 1;		}		Ammo[i] = a;	}}
+	}}function Reload(){	for(var i : int in range(0,6)){		var a : int = Ammo[i];		if(a > 0){			a -= 1;		}		Ammo[i] = a;		if(a == 0){					}	}}
