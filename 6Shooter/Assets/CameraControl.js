@@ -19,22 +19,24 @@ var level2Pos : Vector3;
 var level3Pos : Vector3;
 var level4Pos : Vector3;
 
+var prefab : GameObject;
+
 function Start() {
 	goToNextLevel = false;
 	navInputAvailable = true;
 	playInputAvailable = false;
 	currentLevel = 0;
 	cameraPosition = transform.position;
-	level0Pos = Vector3(-20,215,24);
-	level1Pos =	Vector3(1,23,-10);
-	level2Pos = Vector3(100,13,-10);
-	level3Pos = Vector3(1,123,-10);
-	level4Pos = Vector3(1,13,-100);
+	level0Pos = Vector3(75,150,26);
+	level1Pos =	Vector3(1,22,-10);
+	level2Pos = Vector3(-101,22,-10);
+	level3Pos = Vector3(-165,22,-10);
+	level4Pos = Vector3(-300,100,24);
 }
 
 function Update() {
 	MoveCamera();
-	ChangeLevel();
+	ChangeLevel();		
 }
 
 function ChangeLevel() {
@@ -60,7 +62,7 @@ function ChangeLevel() {
 			prevLevelPos = level2Pos;
 			break;
 		case(4):
-			nextLevelPos = level4Pos;
+			nextLevelPos = level0Pos;
 			currentLevelPos = level4Pos;
 			prevLevelPos = level3Pos;
 			break;
@@ -70,57 +72,78 @@ function ChangeLevel() {
 }
 
 function MoveCamera() {
-	var journeyTimeS = 1;
-	var journeyTime = 1;
-	if (currentLevel == 0 && Input.anyKeyDown == true && navInputAvailable == true) {
-		navInputAvailable = false;
-		playInputAvailable = false;
-		transform.position = Vector3.Slerp(currentLevelPos,nextLevelPos,journeyTimeS);
-		yield WaitForSeconds(journeyTimeS);
-		currentLevel = 1;
-		navInputAvailable = true;
-	}
 	if (currentLevel >= 1 && Input.GetKeyDown("left") == true && navInputAvailable == true) {
 		navInputAvailable = false;
 		playInputAvailable = false;
-		transform.position = Vector3.Lerp(currentLevelPos,prevLevelPos,journeyTime);
-		yield WaitForSeconds(journeyTime);
+		transform.position = prevLevelPos;
 		currentLevel -= 1;
 		navInputAvailable = true;
 	}
 	if (currentLevel >= 1 && Input.GetKeyDown("right") == true && navInputAvailable == true) {
 		navInputAvailable = false;
 		playInputAvailable = false;
-		transform.position = Vector3.Lerp(currentLevelPos,nextLevelPos,journeyTime);
-		yield WaitForSeconds(journeyTime);
+		transform.position = nextLevelPos;
 		currentLevel += 1;
 		navInputAvailable = true;
 	}
 	if (currentLevel >= 1 && Input.GetKeyDown("return") == true && navInputAvailable == true) {
 		navInputAvailable = false;
-		transform.position = Vector3.Lerp(currentLevelPos,currentLevelPos - Vector3(0,-10,0),journeyTime);
-		yield WaitForSeconds(journeyTime);
+		LevelLoader();
+		transform.position = currentLevelPos + Vector3(0,-10,0);
 		playInputAvailable = true;
 	}
 	if (currentLevel >= 1 && Input.GetKeyDown("escape") == true && playInputAvailable == true) {
 		cameraPosition = transform.position;
 		playInputAvailable = false;
-		transform.position = Vector3.Lerp(cameraPosition,currentLevelPos + Vector3(0,10,0),journeyTime);
-		yield WaitForSeconds(journeyTime);
+		LevelLoader();
+		transform.position = currentLevelPos + Vector3(0,10,0);
 		navInputAvailable = true;
 	}
 	if (goToNextLevel == true) {
+		goToNextLevel = false;
 		playInputAvailable = false;
-		transform.position = Vector3.Lerp(cameraPosition,currentLevelPos - Vector3(0,10,0),journeyTime);
-		yield WaitForSeconds(journeyTime);
-		transform.position = Vector3.Slerp(currentLevelPos,nextLevelPos,journeyTimeS);
-		yield WaitForSeconds(journeyTimeS);
+		LevelLoader();
+		transform.position = nextLevelPos;
 		currentLevel += 1;
 		navInputAvailable = true;
-		goToNextLevel = false;
+	}
+	if (currentLevel == 0 && Input.anyKeyDown == true && navInputAvailable == true) {
+		navInputAvailable = false;
+		playInputAvailable = false;
+		transform.position = nextLevelPos;
+		currentLevel = 1;
+		navInputAvailable = true;
 	}
 }
 
 function LevelComplete() {
-	goToNextLevel = true;
+	goToNextLevel = true;	
+}
+
+function LevelLoader() {
+	var clone;
+	switch(currentLevel){
+		case(1):
+			Destroy(gameObject.Find("Level1"));
+			clone = Instantiate(Resources.Load("Level1"));
+			GameObject.Find("Level1(Clone)").name = "Level1";
+			GameObject.Find("Player").transform.position = Vector3(2,1,-10);
+			break;
+		case(2):
+			Destroy(gameObject.Find("Level2"));
+			clone = Instantiate(Resources.Load("Level2"));
+			GameObject.Find("Level2(Clone)").name = "Level2";
+			GameObject.Find("Player").transform.position = Vector3(-101,1,-10);
+			break;
+		case(3):
+			Destroy(gameObject.Find("Level3"));
+			clone = Instantiate(Resources.Load("Level3"));
+			GameObject.Find("Level3(Clone)").name = "Level3";
+			GameObject.Find("Player").transform.position = Vector3(-166,1,-10);
+			break;
+		case(4):
+			break;
+		default:
+			break;
+	}
 }
